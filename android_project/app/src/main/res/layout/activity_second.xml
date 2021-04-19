@@ -5,13 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".SecondActivity">
     <FrameLayout
-        android:id="@+id/layoutFlutter"
-        android:layout_width="match_parent"
+        android:id="@+id/layoutFlutter1"
         android:background="#4CAF50"
+        android:layout_width="match_parent"
         android:layout_height="400dp" />
+    <TextView
+        android:id="@+id/textMsg"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:background="#03A9F4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
 
     <TextView
         android:id="@+id/btnDetail"
@@ -20,16 +26,7 @@
         android:layout_marginTop="10dp"
         android:background="#FF9800"
         android:gravity="center"
-        android:onClick="onDetail"
-        android:text="跳到Flutter页面" />
+        android:onClick="onJump"
+        android:text="Android TO Flutter" />
 
-    <TextView
-        android:id="@+id/btnFlutter"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="10dp"
-        android:background="#FF9800"
-        android:gravity="center"
-        android:onClick="onSendFlutter"
-        android:text="发送数据到Flutter" />
 </LinearLayout>

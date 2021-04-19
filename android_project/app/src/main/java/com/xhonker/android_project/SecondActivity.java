@@ -1,37 +1,32 @@
 package com.xhonker.android_project;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.xhonker.android_project.hybrid.FlutterConstant;
-import com.xhonker.android_project.hybrid.FlutterEntry;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
-import io.flutter.embedding.android.FlutterActivity;
+import com.xhonker.android_project.hybrid.FlutterConstant;
+
 import io.flutter.embedding.android.FlutterFragment;
 
-public class MainActivity extends AppCompatActivity {
-    private FlutterEntry flutterEntry;
+public class SecondActivity extends AppCompatActivity {
+
+    protected TextView textMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        flutterEntry = new FlutterEntry(this);
-        renderFlutterToAndroidView(R.id.layoutFlutter, FlutterConstant.PAGE_ABOUT);
+        setContentView(R.layout.activity_second);
+        renderFlutterToAndroidView(R.id.layoutFlutter1, FlutterConstant.PAGE_MAIN);
+        textMsg = findViewById(R.id.textMsg);
+        textMsg.setText(String.format("from Flutter:%s", getIntent().getStringExtra("msg")));
     }
 
-    public void onDetail(View view) {
-        Intent intent = FlutterActivity.withCachedEngine(FlutterConstant.PAGE_MAIN).build(this);
-        startActivity(intent);
-    }
-
-    public void onSendFlutter(View view) {
-        flutterEntry.flutterPlugin.sendDataToFlutter("1234");
+    public void onJump(View view) {
+        MockRouter mockRouter = MockRouter.get();
+        mockRouter.flutterAboutPage(this);
     }
 
     /**
